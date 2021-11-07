@@ -5,4 +5,3 @@ ADD target/*.jar app.jar
 EXPOSE 8089
 CMD ["java", "-jar", "/app/app.jar"]
 
-
