@@ -65,6 +65,23 @@
 			<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-deploy-plugin</artifactId>
+    <executions>
+
+<execution>
+
+<id>default-deploy</id>
+
+<phase>deploy</phase>
+
+<goals>
+
+<goal>deploy</goal>
+
+</goals>
+
+</execution>
+
+</executions>
 			</plugin>
 			<plugin>
   <groupId>org.jacoco</groupId>
