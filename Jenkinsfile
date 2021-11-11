@@ -58,9 +58,12 @@ stage('Deploy our image') {
 steps { script { docker.withRegistry( '', registryCredential) { dockerImage.push() } } }
 }
 post {
-        always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        success {
+            emailext body: 'build success', subject: 'jenkins',to: 'mosbah.hilali@esprit.tn'
         }
+    failure {
+    emailext body: 'build failure', subject: 'jenkins',to: 'mosbah.hilali@esprit.tn'
+    }
     }
 
 }
