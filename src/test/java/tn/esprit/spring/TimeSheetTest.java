@@ -30,14 +30,32 @@ public class TimeSheetTest {
 	@Test
 	public void testAjouterTimesheet()
 	{
-		
+		int idemp;
+		int idmiss ;
+		Employe employe = new Employe( "Wiem", "chalouati", "wiem.chalouati1@esprit.tn", true, Role.INGENIEUR);
+		try
+		{
+		idemp = iEmployeService.ajouterEmploye(employe);
+		Mission mission = new Mission("Mission1","Lorem Ipsum");
+		idmiss = it.ajouterMission(mission);
+		it.ajouterTimesheet(idmiss, idemp, new Date(),new Date());
+		LOGGER.info("Added successfully with");
+		}
+		catch (Exception e) { LOGGER.error("Problem encountred : " + e); }
 		
 	}
 	
 	@Test
 	public void testValiderTimesheet()
 	{
-		
+		int idemp;
+		int idmiss;
+		Employe employe = new Employe( "Chef", "chalouati", "wiem.chalouati1@esprit.tn", true, Role.CHEF_DEPARTEMENT);
+		idemp = iEmployeService.ajouterEmploye(employe);
+		Mission mission = new Mission("Mission111","Lorem Ipsum");
+		idmiss = it.ajouterMission(mission);
+		it.ajouterTimesheet(idmiss, idemp, new Date(),new Date());
+		it.validerTimesheet(idmiss, idemp, new Date(),new Date(), idemp);
 	}
 
 }
