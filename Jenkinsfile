@@ -56,7 +56,7 @@ steps { script { dockerImage= docker.build registry + ":$BUILD_NUMBER" } }
 }
 stage('Deploy our image') {
 steps { script { docker.withRegistry( '', registryCredential) { dockerImage.push() } } }
-}
+}}
 post {
         success {
             emailext body: 'build success', subject: 'jenkins',to: 'mosbah.hilali@esprit.tn'
@@ -64,7 +64,7 @@ post {
     failure {
     emailext body: 'build failure', subject: 'jenkins',to: 'mosbah.hilali@esprit.tn'
     }
-    }
+    
 
 }
 }
