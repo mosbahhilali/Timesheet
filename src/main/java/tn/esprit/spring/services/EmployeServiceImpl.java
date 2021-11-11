@@ -83,12 +83,13 @@ public class EmployeServiceImpl implements IEmployeService {
 		return contrat.getReference();
 	}
 
-	public void affecterContratAEmploye(int contratId, int employeId) {
+	public int affecterContratAEmploye(int contratId, int employeId) {
 		Contrat contratManagedEntity = contratRepoistory.findById(contratId).orElse(new Contrat());
 		Employe employeManagedEntity = employeRepository.findById(employeId).orElse(new Employe());
 
 		contratManagedEntity.setEmploye(employeManagedEntity);
-		contratRepoistory.save(contratManagedEntity);
+		Contrat c= contratRepoistory.save(contratManagedEntity);
+		return c.getEmploye().getId();
 		
 	}
 

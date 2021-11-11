@@ -75,9 +75,9 @@ public class RestControlEmploye {
 	}
 	
 	   @PutMapping(value = "/affecterContratAEmploye/{idcontrat}/{idemp}") 
-	public void affecterContratAEmploye(@PathVariable("idcontrat")int contratId, @PathVariable("idemp")int employeId)
+	public int affecterContratAEmploye(@PathVariable("idcontrat")int contratId, @PathVariable("idemp")int employeId)
 	{
-		iemployeservice.affecterContratAEmploye(contratId, employeId);
+		return iemployeservice.affecterContratAEmploye(contratId, employeId);
 	}
 
 	
