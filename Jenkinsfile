@@ -48,9 +48,7 @@ stage( 'Checkout  GIT' ){
            
        
         }
-stage('Cloning our Git') {
-steps { git branch: 'main', url: 'https://github.com/mosbahhilali/Timesheet.git' }
-}
+
 stage('Building our image') {
 steps { script { dockerImage= docker.build registry + ":$BUILD_NUMBER" } }
 }

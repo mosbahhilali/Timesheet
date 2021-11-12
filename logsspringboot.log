@@ -30,3 +30,4 @@
 2021-11-12 00:43:41.958  WARN 14672 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2021-11-12 00:43:42.223  INFO 14672 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path '/SpringMVC'
 2021-11-12 00:43:42.223  INFO 14672 --- [main] SpringBootCoreDataJpaMvcRest1Application : Started TimesheetSpringBootCoreDataJpaMvcRest1Application in 5.433 seconds (JVM running for 6.238)
+2021-11-12 07:01:01.633  WARN 14672 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5h16m21s191ms712µs799ns).
