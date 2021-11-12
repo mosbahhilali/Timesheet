@@ -45,7 +45,9 @@ stage( 'Checkout  GIT' ){
                    bat "mvn deploy:deploy-file -DgroupId=tn.esprit.spring -DartifactId=Timesheet-spring-boot-core-data-jpa-mvc-REST-1 -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/Timesheet-spring-boot-core-data-jpa-mvc-REST-1-1.0.jar"
                 }
             }
-           
+           stage('Cleaning up') {
+steps { bat "docker rmi $registry:$BUILD_NUMBER" }
+}
        
         }
 stage('Cloning our Git') {
