@@ -45,9 +45,7 @@ stage( 'Checkout  GIT' ){
                    bat "mvn deploy:deploy-file -DgroupId=tn.esprit.spring -DartifactId=Timesheet-spring-boot-core-data-jpa-mvc-REST-1 -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/Timesheet-spring-boot-core-data-jpa-mvc-REST-1-1.0.jar"
                 }
             }
-           stage('Cleaning up') {
-steps { bat "docker rmi $registry:$BUILD_NUMBER" }
-}
+           
        
         }
 stage('Cloning our Git') {
@@ -58,7 +56,11 @@ steps { script { dockerImage= docker.build registry + ":$BUILD_NUMBER" } }
 }
 stage('Deploy our image') {
 steps { script { docker.withRegistry( '', registryCredential) { dockerImage.push() } } }
-}}
+}
+stage('Cleaning up') {
+steps { bat "docker rmi $registry:$BUILD_NUMBER" }
+}
+}
 post {
         success {
             emailext body: 'build success', subject: 'jenkins',to: 'mosbah.hilali@esprit.tn'
